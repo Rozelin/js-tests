@@ -1,3 +1,5 @@
+/* http://codepen.io/ElenRoze/pen/jBJJvB */
+
 var TextCounter = {
     init: function() {
         this.textArea = document.querySelector('#js-message');
