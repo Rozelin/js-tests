@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+.slider {
+  position: relative;
+  background-color: gray;
+  max-width: 100%;
+  width: 420px;
+  margin: 30px auto;
+}
+.slide {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: gray;
+  color: white;
+  padding: 10px;
+  display: none;
+}
+@media (max-width: 450px) {
+  .slide:first-child {
+    display: block!important;
+  }
+  .slide:not(:first-child) {
+    display: none!important;
+  }
+}

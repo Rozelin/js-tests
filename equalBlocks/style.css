@@ -1,0 +1,12 @@
+.card {
+  display: inline-block;
+  width: 200px;
+  padding: 10px;
+  owerflow: hidden;
+  vertical-align: top;
+  border: 1px solid gray;
+  margin: 10px;
+}
+.card p {
+  word-wpap: break-word;
+}
