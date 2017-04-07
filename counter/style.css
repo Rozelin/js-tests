@@ -3,24 +3,24 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   width: 100%;
   height: 100%;
   background-color: #1d1f20;
   padding: 30px;
-}
+  font-family: sans-serif;
 
+}
 .message-area {
   border-radius: 15px;
   padding: 15px;
   background-color: rgba(255, 255, 255, .3);
   color: white;
   font-size: 14px;
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 2px 2px rgba(255, 255, 255, .3);
-  }
+}
+.message-area:focus {
+  outline: none;
+  box-shadow: 0 0 2px 2px rgba(255, 255, 255, .3);
 }
   .white {
   color: white;
@@ -28,5 +28,8 @@ body {
   .total {
   margin: 20px 0;
   font-size: 18px;
-  font-family: sans-serif;
+}
+.errorHandler {
+  color: red;
+  font-size: 12px;
 }

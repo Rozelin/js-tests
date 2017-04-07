@@ -1,0 +1,93 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1D1F20;
+}
+
+.container {
+  margin: 50px auto;
+  width: 210px;
+  height: 140px;
+  position: relative;
+  perspective: 1000px;
+}
+
+#carousel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: .6s ease-out;
+}
+
+figure {
+  padding: 0;
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 150px;
+}
+figure img {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+button {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 40px 10px 0 -10px;
+  border-radius: 5px;
+  font-size: 12px;
+  border: none;
+  background: white;
+  cursor: pointer;
+  transition: all .3s ease-out;
+}
+button:hover {
+  background: lightgray;
+}
+button:active {
+  background: gray;
+}
+button:active, button:focus {
+  outline: none;
+}
+
+.prev,
+.next {
+  user-select: none;
+  position: absolute;
+  bottom: -80px;
+  color: white;
+  font-size: 60px;
+  cursor: pointer;
+  transition: all .2s ease-out;
+}
+.prev:hover,
+.next:hover {
+  color: lightgray;
+}
+.prev:active,
+.next:active {
+  color: gray;
+}
+
+.next {
+  left: 20px;
+}
+
+.prev {
+  right: 40px;
+}

@@ -1,22 +1,37 @@
-/* http://codepen.io/ElenRoze/pen/jBJJvB */
+var counterModule = (function(){
+  'use strict';
 
-var TextCounter = {
-    init: function() {
-        this.textArea = document.querySelector('#js-message');
-        this.maxChar = +this.textArea.getAttribute('maxlength') || 140;
-        this.textAreaTotal = document.querySelector('#js-message-left-total');
-        this.textAreaLeft = document.querySelector('#js-message-left-symbols');
-        this.textAreaLeft.textContent = this.maxChar;
-        this.events();
-    },
+  var events = function(elem){
+    const wrapper   = document.querySelector(elem);
+    const symbTotal = wrapper.querySelector('.js-message-left-total');
+    const symbLeft  = wrapper.querySelector('.js-message-left-symbols');
+    const errText   = wrapper.querySelector('.errorHandler');
+    const msgBlock  = wrapper.querySelector('.js-message');
+    let maxLength   = +msgBlock.getAttribute('maxlength') || 140;
+    let message     = '';
 
-    events: function() {
-      this.textArea.addEventListener('keydown', function(e){
-        if(this.value.length > TextCounter.maxChar) {
-          this.value = this.value.slice(0, -1);
-        }
-        TextCounter.textAreaTotal.textContent = this.value.length;
-        TextCounter.textAreaLeft.textContent = TextCounter.maxChar - this.value.length;
-        }
-    )}
-};
+    symbLeft.textContent = maxLength;
+
+    wrapper.addEventListener('keyup', function(e){
+      let messageLength = msgBlock.value.length;
+
+      if(messageLength >= maxLength) {
+        msgBlock.value = msgBlock.value.slice(0, maxLength);
+        errText.textContent = 'Length shall not be longer than ' + maxLength;
+        throw new Error('Longer than ' + maxLength);
+      } else {
+        errText.textContent = '';
+      }
+      symbTotal.textContent = (messageLength >= maxLength) ? maxLength : messageLength;
+      symbLeft.textContent  = (maxLength - messageLength >= 0) ? maxLength - messageLength : 0;
+    });
+  };
+
+  return {
+    init: function(elem){
+      events(elem);
+    }
+  }
+}());
+
+counterModule.init('#jsCounterWrapper');

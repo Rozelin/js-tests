@@ -8,12 +8,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <textarea name="message" id="js-message" cols="30" rows="10" class="message-area" maxlength="140"></textarea>
-<p class="total white">Symbols total: <b id="js-message-left-total">0</b>, left: <b id="js-message-left-symbols">0</b></p>
+  <div id="jsCounterWrapper">
+    <textarea name="message" cols="30" rows="10" class="js-message message-area"></textarea>
+    <p class="errorHandler"></p>
 
+    <p class="total white">Symbols total: <b class="js-message-left-total">0</b>, left: <b class="js-message-left-symbols">0</b></p>
+  </div>
 <script src="app.js"></script>
 <script>
-  TextCounter.init();
+  counterModule.init('#jsCounterWrapper');
 </script>
 </body>
 </html>
