@@ -1,3 +1,5 @@
+/* http://codepen.io/ElenRoze/pen/VpJwPy */
+
 var LoaderModule = (function() {
     'use strict';
 
@@ -45,9 +47,18 @@ var LoaderModule = (function() {
       });
     };
 
+      function replaceImg(img){
+        img.src = 'https://thumbs.dreamstime.com/z/big-smile-emoticon-26256350.jpg';
+      };
+
      return {
         init: function() {
            countLoading();
-           }
+           },
+       replace: function(img){
+           replaceImg(img);
+          }
         }
      })();
+
+    LoaderModule.init();
