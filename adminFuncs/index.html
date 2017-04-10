@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Week</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Product List</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>#SKU</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Is available</th>
+                    <th>Remove item</th>
+                </tr>
+                </thead>
+                <tbody id="products-list">
+                <tr>
+                    <th scope="row">D33H1</th>
+                    <td>Macbook pro 13 inch</td>
+                    <td>1500$</td>
+                    <td>13-inch MacBook Pro with Retina display</td>
+                    <td>In stock</td>
+                    <td><button class="remove">&#10008;</button></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h2>Add new Product</h2>
+            <form action="#" id="add-product-form" name="addproductform">
+                <div class="form-group">
+                    <label for="pTitle">Product title</label>
+                    <input type="text" name="pTitle" class="form-control" id="pTitle" required pattern="^[а-яА-ЯёЁa-zA-Z0-9_ ]+$">
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="pSKU">Product SKU</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">#</div>
+                                <input type="text" name="pSKU" class="form-control" id="pSKU" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="pPrice">Product Price</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">$</div>
+                                <input type="text" name="pPrice" class="form-control" id="pPrice" required pattern="^[0-9]+([.]|[,])?[0-9]*([0-9]+)?$" title="Допускаются символы 0-9 и '.', ','">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                          <div class="checkbox">
+                            <br/><label><input type="checkbox" name="pAvailability">Is available</label>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pDesc">Product Description</label>
+                    <textarea name="pDesc" class="form-control" id="pDesc"></textarea>
+                </div>
+
+               <button type="submit" id="addToCart" class="btn btn-success">Add Product</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
