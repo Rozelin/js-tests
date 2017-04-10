@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1D1F20;
+}
+
+.wrapper {
+  width: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrapper > div {
+  position: relative;
+  line-height: 7vh;
+  flex-basis: 7vh;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 20px;
+  height: 7vh;
+  margin: .5vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color .4s ease-out;
+}
+.wrapper > div:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: attr(data-click);
+  font-size: 20px;
+  color: gray;
+  text-align: center;
+}
+
+[class$="-btn"] {
+  cursor: pointer;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: -16px;
+  margin: 15px 5px;
+  color: white;
+}
+[class$="-btn"]:hover {
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+}
+
+.gen-btn {
+  background-color: green;
+}
+
+.show-btn {
+  background-color: orange;
+}
+
+.reset-btn {
+  background-color: red;
+}
+
+.blow {
+  background-color: red !important;
+}
+
+.color-grade-0 {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.color-grade-1 {
+  background-color: #FCF6A9 !important;
+}
+
+.color-grade-2 {
+  background-color: #FCCF05 !important;
+}
+
+.color-grade-3 {
+  background-color: #FC8505 !important;
+}
+
+.color-grade-4 {
+  background-color: #F50202 !important;
+}
