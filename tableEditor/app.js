@@ -1,3 +1,4 @@
+/* https://codepen.io/ElenRoze/pen/BRaLPE */
 
 var tableEditorModule = (function() {
   const table           = document.getElementById("tableBody");
@@ -10,12 +11,12 @@ var tableEditorModule = (function() {
   const delRowsBtn      = document.getElementById("delRow");
   const importDataBtn   = document.getElementById("importDataBtn");
   const importDataArea  = document.getElementById("textArea");
-  const exportDataBtn   = document.getElementById('exportDataBtn');
-  const sortIdBtn       = document.getElementById('sortId');
-  const sortNameBtn     = document.getElementById('sortName');
-  const sortQtyBtn      = document.getElementById('sortQty');
-  const sortAvailBtn    = document.getElementById('sortAvail');
-  const filterNameInp   = document.getElementById('filterName');
+  const exportDataBtn   = document.getElementById("exportDataBtn");
+  const sortIdBtn       = document.getElementById("sortId");
+  const sortNameBtn     = document.getElementById("sortName");
+  const sortQtyBtn      = document.getElementById("sortQty");
+  const sortAvailBtn    = document.getElementById("sortAvail");
+  const filterNameInp   = document.getElementById("filterName");
   const initStr         = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   const strLength       = initStr.length;
 
@@ -143,7 +144,7 @@ var tableEditorModule = (function() {
   let currentSortedColumn = "";
 
   function sortColumn(column, button) {
-    button.addEventListener('click', function(e) {
+    button.addEventListener("click", function(e) {
       e.preventDefault();
       if(currentSortedColumn === column) {
         tableData.reverse();
@@ -176,10 +177,10 @@ var tableEditorModule = (function() {
     addDemoData();
     importData();
     exportData();
-    sortColumn('id', sortIdBtn);
-    sortColumn('name', sortNameBtn);
-    sortColumn('qty', sortQtyBtn);
-    sortColumn('avail', sortAvailBtn);
+    sortColumn("id", sortIdBtn);
+    sortColumn("name", sortNameBtn);
+    sortColumn("qty", sortQtyBtn);
+    sortColumn("avail", sortAvailBtn);
     filterName();
   };
   return {
