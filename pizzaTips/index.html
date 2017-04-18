@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Pizza Tooltips</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="pizza-container">
+		<div class="pizza">
+			<img src="http://yogisushi.ru/upload/image/catalog/photo/grec600.png" alt="">
+		</div>
+		<div class="mobile-descript"></div>
+	</div>
+	<div class="pizza-settings">
+		<h3>- Options -</h3>
+		<div class="settings-tab-1">
+			<div class="tab-header">Add a Circle</div>
+			<div class="tab-content">
+				<div id="addTextBlock">
+					<label for="addText1">Text to add: <input type="text" id="addTextField1" name="addTextField1"  placeholder="Text piece 1"></label>
+				</div>
+				<button id="addTextField">Add one more text</button>
+				<button id="addText">Add text piece(s)</button>
+			</div>
+		</div>
+		<div class="settings-tab-2">
+			<div class="tab-header">Remove a Circle</div>
+			<div class="tab-content">
+				<p>Enter a positive number (to count clockwise) or a negative ( to count counterclockwise). Circle # start from 0 </p>
+				<hr/>
+				<form>
+					<label for="removeCircle">Circle #: <input type="text" id="removeCircle" name="removeCircle" placeholder="Enter circle number"></label>
+					<div class="error"></div>
+					<button id="removeCircleBtn">Remove circle</button>
+				</form>
+			</div>
+		</div>
+		<div class="settings-tab-3">
+			<div class="tab-header">Reload with custom options</div>
+			<div class="tab-content">
+				<p>Enter new text<br/> (separate with semicolon for each circle):</p>
+				<form action="#" id="reloadForm">
+					<textarea name="reloadCircles" rows="3" id="reloadCircles">text piece 1;text piece 2;text piece 3;text piece 4</textarea>
+					<hr/>
+					<label for="isOnlyOneActive"><input type="checkbox" id="isOnlyOneActive" name="isOnlyOneActive"> Only one tooltip is active</label>
+					<label for="isFirstOpen"><input type="checkbox" id="isFirstOpen" name="isFirstOpen"> First tooltip is open on load</label>
+					<label for="isPreloader"><input type="checkbox" id="isPreloader" name="isPreloader"> Enable preloader</label>
+					<label for="isFancyLoad"><input type="checkbox" id="isFancyLoad" name="isFancyLoad"> Enable fancy load</label>
+					<button id="removeCircleBtn">Reload Pizza</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

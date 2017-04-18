@@ -24,7 +24,7 @@ function TableEditorConstructor(params) {
   const sortAvailBtn    = $(params.sortAvailBtn);
   const filterNameInp   = $(params.filterNameInp);
   const initStr         = params.initStr || "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  const strLength       = initStr.length;
+  const strLength       = +initStr.length - 1;
   const paginationLen   = params.paginationLen || 10;
 
   let tableData         = [];
@@ -90,16 +90,14 @@ function TableEditorConstructor(params) {
   };
 
   self.clearTable = function() {
-    clearTableBtn.addEventListener("click", function() {
+    clearTableBtn.addEventListener("click", () => {
       tableData = [];
       self.drawTable();
     });
   };
 
   function recountIds() {
-    tableData.map(function(item, i) {
-      item.id = i + 1;
-    });
+    tableData.map((item, i) => item.id = i + 1 );
   };
 
   self.delRows = function() {
