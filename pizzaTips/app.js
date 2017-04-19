@@ -1,9 +1,9 @@
 (function($) {
     var defaults = {
       isOnlyOneActive: false,
-      isFirstOpen:     true,
+      isFirstOpen:     false,
       isPreloader:     false,
-      isFancyLoad:     true
+      isFancyLoad:     false
      };
 
     $.fn.pizzaTooltip = function(params) {
