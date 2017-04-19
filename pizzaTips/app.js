@@ -3,13 +3,13 @@
       isOnlyOneActive: false,
       isFirstOpen:     true,
       isPreloader:     false,
-      isFancyLoad:     false
+      isFancyLoad:     true
      };
 
-    $.fn.pizzaTooltip = function(params){
+    $.fn.pizzaTooltip = function(params) {
         options = $.extend({}, defaults, params);
 				const addTextBlock    = $("#addTextBlock");
-        const addTxtBtnField  = $("#addTextField");
+        const addTxtFieldBtn  = $("#addTextField");
         const addTextBtn      = $("#addText");
         const removeCircleBtn = $("#removeCircleBtn");
         const removeCircleInp = $("#removeCircle");
@@ -22,38 +22,39 @@
         let tooltipsMob       = "";
 
         function initToolTips() {
-          data           =  options.data;
+          data           = options.data;
           countNumber    = options.data.length;
   				minAngle       = 360 / countNumber;
           tooltips       = "";
           tooltipsMob    = "";
+
           $(".tooltip-wrap").each(function(item, i) {
             $(this).remove();
           });
+
           $(".mobile-descript").html("");
 
           data.forEach(function(item, i) {
-            let currentAngle =  minAngle * (i + 1) - 90;
+            let currentAngle =  minAngle * (i + 1) + 270 - minAngle;
             let currentClass = "";
 
-            if      (currentAngle == 0)                        { currentClass = "right"; }
-            else if (currentAngle > 0 && currentAngle < 90 )   {currentClass = "bottom-right"; }
-            else if (currentAngle == 90 )                      {currentClass = "bottom"; }
-            else if (currentAngle > 90 && currentAngle < 180 ) {currentClass = "bottom-left"; }
-            else if (currentAngle == 180 )                     {currentClass = "left"; }
-            else if (currentAngle > 180 && currentAngle < 270 ){currentClass = "top-left"; }
-            else if (currentAngle == 270 )                     {currentClass = "top"; }
-            else                                               {currentClass = "top-right"; };
+            if      (currentAngle == 270 )                     {currentClass = "top"; }
+            else if (currentAngle > 270 && currentAngle < 360 ){currentClass = "top-right"; }
+            else if (currentAngle == 360 )                     {currentClass = "right"; }
+            else if (currentAngle > 360 && currentAngle < 450 ){currentClass = "bottom-right"; }
+            else if (currentAngle == 450 )                     {currentClass = "bottom"; }
+            else if (currentAngle > 450 && currentAngle < 540 ){currentClass = "bottom-left"; }
+            else if (currentAngle == 540 )                     {currentClass = "left"; }
+            else                                               {currentClass = "top-left"; };
 
             tooltips += `
             <div class="tooltip-wrap" style="transform:rotate(${currentAngle}deg)">
-              <div class="tooltip-btn ${currentClass}" data-item="${i}" style="transform:rotate(-${currentAngle + 360}deg)">
-                <div class="tooltip-content" data-item="${i}">${item}</div>
+              <div class="tooltip-btn ${currentClass}" data-item="${i}" style="transform:rotate(-${currentAngle}deg)">
+                <div class="tooltip-content">${item}</div>
               </div>
             </div>`;
 
             tooltipsMob += `<p data-mob-item="${i}">${i + 1}. ${item}</>`;
-          //console.log(currentAngle);
           });
 
           $(".pizza").append(tooltips);
@@ -65,18 +66,19 @@
         $(".pizza").off("click");
 
         function showToolips() {
-           //console.log($(this).data("item"));
-            let itemCount = $(this).data("item");
-            if(options.isOnlyOneActive) {
-              $(".tooltip-btn").not(this).removeClass("open");
-              $(this).toggleClass("open");
-              $(".mobile-descript p").not("[data-mob-item=" + itemCount +"]").removeClass("visible");
-              $("[data-mob-item=" + itemCount +"]").addClass("visible");
-            } else {
-              $(this).toggleClass("open");
-              $("[data-mob-item=" + itemCount +"]").toggleClass("visible");
-            }
+          let itemCount = $(this).data("item");
+
+          if(options.isOnlyOneActive) {
+            $(".tooltip-btn").not(this).removeClass("open");
+            $(this).toggleClass("open");
+            $(".mobile-descript p").not("[data-mob-item=" + itemCount + "]").removeClass("visible");
+            $("[data-mob-item=" + itemCount + "]").addClass("visible");
+          } else {
+            $(this).toggleClass("open");
+            $("[data-mob-item=" + itemCount +"]").toggleClass("visible");
+          }
         };
+
         $(".pizza").on("click", ".tooltip-btn", showToolips);
 
         if(options.isFirstOpen) {
@@ -92,7 +94,7 @@
       if(options.isPreloader) {
         const image = new Image();
         image.src = $(".pizza img").attr("src");
-        image.onload = function(){
+        image.onload = function() {
           initPlugin();
          };
       } else {
@@ -107,7 +109,7 @@
         $(thisTab).slideToggle();
       });
 
-      $(addTxtBtnField).click(function() {
+      $(addTxtFieldBtn).click(function() {
         const currentItem = $("#addTextBlock input[type=text]").length + 1;
         $(addTextBlock).append(`
           <label for="addTextField${currentItem}">Text to add: <input type="text" name="addTextField${currentItem}" id="addTextField${currentItem}" placeholder="Text piece ${currentItem}"><span class="close-btn">✖</span></label>
@@ -147,14 +149,12 @@
         if($(reloadCircles).val()) {
           options.data = $(reloadCircles).val().split(";");
         }
-          options.isOnlyOneActive = $("#isOnlyOneActive").prop("checked");
-          options.isFirstOpen     = $("#isFirstOpen").prop("checked");
-          options.isPreloader     = $("#isPreloader").prop("checked");
-          options.isFancyLoad     = $("#isFancyLoad").prop("checked");
+        options.isOnlyOneActive = $("#isOnlyOneActive").prop("checked");
+        options.isFirstOpen     = $("#isFirstOpen").prop("checked");
+        options.isPreloader     = $("#isPreloader").prop("checked");
+        options.isFancyLoad     = $("#isFancyLoad").prop("checked");
 
-         initPlugin();
-
-        //console.log(data, defaults);
+        initPlugin();
 
       });
 
@@ -167,5 +167,5 @@ var $pizza = $(".pizza").pizzaTooltip({
           "1.Consectetur adipiscing elit.",
           "2.Fusce dapibus ex at aliquet tincidunt.",
           "3.Consectetur adipiscing elit.",
-        "3.Consectetur adipiscing elit."]
+          "3.Consectetur adipiscing elit."]
     });

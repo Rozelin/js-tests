@@ -227,6 +227,13 @@ hr {
 textarea[name=reloadCircles] {
 	width: 100%;
 }
+@media(max-width: 1050px) {
+	.pizza-settings,
+	.pizza-container {
+		display: block;
+		margin: 50px auto;
+	}
+}
 @media (min-width: 500px) {
 	.mobile-descript {
 		display: none!important;
@@ -236,4 +243,5 @@ textarea[name=reloadCircles] {
 	.tooltip-content {
 		display: none!important;
 	}
+
 }
