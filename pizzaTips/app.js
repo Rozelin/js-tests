@@ -1,5 +1,6 @@
 (function($) {
     var defaults = {
+      data:            [],
       isOnlyOneActive: false,
       isFirstOpen:     false,
       isPreloader:     false,
@@ -15,14 +16,13 @@
         const removeCircleInp = $("#removeCircle");
         const reloadBtn       = $("#removeCircleBtn");
         const reloadForm      = $("#reloadForm");
-        let data              = [];
         let countNumber       = 0;
         let minAngle          = 0;
 				let tooltips          = "";
         let tooltipsMob       = "";
 
         function initToolTips() {
-          data           = options.data;
+          let data       = options.data;
           countNumber    = options.data.length;
   				minAngle       = 360 / countNumber;
           tooltips       = "";
@@ -35,21 +35,23 @@
           $(".mobile-descript").html("");
 
           data.forEach(function(item, i) {
-            let currentAngle =  minAngle * (i + 1) + 270 - minAngle;
+            const angle =  minAngle * (i + 1) + 270 - minAngle;
             let currentClass = "";
 
-            if      (currentAngle == 270 )                     {currentClass = "top"; }
-            else if (currentAngle > 270 && currentAngle < 360 ){currentClass = "top-right"; }
-            else if (currentAngle == 360 )                     {currentClass = "right"; }
-            else if (currentAngle > 360 && currentAngle < 450 ){currentClass = "bottom-right"; }
-            else if (currentAngle == 450 )                     {currentClass = "bottom"; }
-            else if (currentAngle > 450 && currentAngle < 540 ){currentClass = "bottom-left"; }
-            else if (currentAngle == 540 )                     {currentClass = "left"; }
-            else                                               {currentClass = "top-left"; };
+            switch (true) {
+                case angle === 270:              currentClass = "top";          break;
+                case angle > 270 && angle < 360: currentClass = "top-right";    break;
+                case angle === 360:              currentClass = "right";        break;
+                case angle > 360 && angle < 450: currentClass = "bottom-right"; break;
+                case angle === 450:              currentClass = "bottom";       break;
+                case angle > 450 && angle < 540: currentClass = "bottom-left";  break;
+                case angle === 540:              currentClass = "left";         break;
+                default:                         currentClass = "top-left";
+            };
 
             tooltips += `
-            <div class="tooltip-wrap" style="transform:rotate(${currentAngle}deg)">
-              <div class="tooltip-btn ${currentClass}" data-item="${i}" style="transform:rotate(-${currentAngle}deg)">
+            <div class="tooltip-wrap" style="transform:rotate(${angle}deg)">
+              <div class="tooltip-btn ${currentClass}" data-item="${i}" style="transform:rotate(-${angle}deg)">
                 <div class="tooltip-content">${item}</div>
               </div>
             </div>`;
@@ -58,7 +60,7 @@
           });
 
           $(".pizza").append(tooltips);
-          $(".mobile-descript").append(tooltipsMob);
+          $(".pizza-container").append(`<div class="mobile-descript">${tooltipsMob}</div>`);
         };
 
       function initPlugin() {
@@ -71,11 +73,11 @@
           if(options.isOnlyOneActive) {
             $(".tooltip-btn").not(this).removeClass("open");
             $(this).toggleClass("open");
-            $(".mobile-descript p").not("[data-mob-item=" + itemCount + "]").removeClass("visible");
-            $("[data-mob-item=" + itemCount + "]").addClass("visible");
+            $(".mobile-descript p").not(`[data-mob-item="${itemCount}"]`).hide();
+            $(`[data-mob-item="${itemCount}"]`).show();
           } else {
             $(this).toggleClass("open");
-            $("[data-mob-item=" + itemCount +"]").toggleClass("visible");
+            $(`[data-mob-item="${itemCount}"]`).toggle();
           }
         };
 
@@ -83,7 +85,7 @@
 
         if(options.isFirstOpen) {
           $("[data-item=0]").addClass("open");
-          $("[data-mob-item=0]").addClass("visible");
+          $("[data-mob-item=0]").show();
         };
 
         if(options.isFancyLoad) {
@@ -123,7 +125,7 @@
       $(addTextBtn).click(function() {
         $("#addTextBlock input[type=text]").each(function(i, item) {
           if(item.value) {
-            data.push(item.value);
+            options.data.push(item.value);
             initPlugin();
             $(this).val("");
           }
@@ -133,14 +135,14 @@
       $(removeCircleBtn).click(function(e) {
         e.preventDefault();
         let arrLenth = options.data.length - 1;
-        $(".error").text("");
+        $(".error").remove();
         let circleNum = +$(removeCircleInp).val();
         if( Number.isInteger(circleNum) && Math.abs(circleNum) <= arrLenth) {
           options.data.splice(circleNum, 1);
           initPlugin();
           $(this).val("");
         } else {
-          $(".error").text(`Enter whole number between -${arrLenth} and ${arrLenth}`);
+          $(`<div class="error">Enter whole number between -${arrLenth} and ${arrLenth}</div>`).insertBefore(removeCircleBtn);
         }
       });
 
@@ -157,15 +159,7 @@
         initPlugin();
 
       });
-
-      return this;
     };
 })(jQuery);
 
-var $pizza = $(".pizza").pizzaTooltip({
-    data: ["0.Lorem ipsum dolor sit amet.",
-          "1.Consectetur adipiscing elit.",
-          "2.Fusce dapibus ex at aliquet tincidunt.",
-          "3.Consectetur adipiscing elit.",
-          "3.Consectetur adipiscing elit."]
-    });
+var $pizza = $(".pizza").pizzaTooltip();
