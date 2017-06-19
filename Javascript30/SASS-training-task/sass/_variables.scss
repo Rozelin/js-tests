@@ -5,8 +5,17 @@ $container-bg: #fff;
 $orange-bg: #ffc600;
 $orange-border: #F3C010;
 $input-bg: #F7F7F7;
+$shadow-dark: black;
 
 /* paddings */
 
 $large: 5rem;
 $small: 4rem;
+
+/* fonts */
+$headerFont: 'Pacifico', cursive;
+
+
+/* media breakpoints */
+
+$breakpoint-tablet: 960px;

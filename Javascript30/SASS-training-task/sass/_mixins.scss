@@ -9,3 +9,9 @@
 @mixin text-shadow($top, $left, $blur, $color) {
   text-shadow: $top, $left $blur, $color;
 }
+
+@mixin font-family($fontFamily, $fontSize, $fontWaight) {
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  font-weight: $fontWaight;
+}

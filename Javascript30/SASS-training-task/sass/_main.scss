@@ -29,12 +29,12 @@ body {
   padding: $small / 2;
   width: $large * 10;
   margin: 0 auto;
-  @include border-radius($small / 4);
   position: relative;
   background: $container-bg;
   overflow: hidden;
   z-index: 1;
-  box-shadow:0 0 5px 5px rgba(0,0,0,0.1);
+  box-shadow:0 0 5px 5px rgba($shadow-dark, 0.1);
+  @include border-radius($small / 4);
 
   h1 {
     width: calc(100% + $small);
@@ -43,10 +43,8 @@ body {
     background-color: $orange-bg;
     border-bottom: 5px solid $orange-border;
     text-align: center;
-    font-size: $large;
-    font-weight: 100;
-    font-family: 'Pacifico', cursive;
     @include text-shadow(3px, 3px, 0, $orange-border);
+    @include font-family($headerFont, $large, 100);
   }
 
   input,
@@ -86,5 +84,8 @@ body {
     &:nth-of-type(1) {
       margin-right: 2%;
     }
+  }
+  @media (min-width: $breakpoint-tablet) {
+    width: 100%;
   }
 }
