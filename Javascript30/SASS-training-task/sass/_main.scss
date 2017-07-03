@@ -17,11 +17,11 @@ body {
   align-items: center;
 
   background-image:
-  radial-gradient(circle at 100% 150%, #3BC1AC 24%, #42D2BB 25%, #42D2BB 28%, #3BC1AC 29%, #3BC1AC 36%, #42D2BB 36%, #42D2BB 40%, transparent 40%, transparent),
-  radial-gradient(circle at 0    150%, #3BC1AC 24%, #42D2BB 25%, #42D2BB 28%, #3BC1AC 29%, #3BC1AC 36%, #42D2BB 36%, #42D2BB 40%, transparent 40%, transparent),
-  radial-gradient(circle at 50%  100%, #42D2BB 10%, #3BC1AC 11%, #3BC1AC 23%, #42D2BB 24%, #42D2BB 30%, #3BC1AC 31%, #3BC1AC 43%, #42D2BB 44%, #42D2BB 50%, #3BC1AC 51%, #3BC1AC 63%, #42D2BB 64%, #42D2BB 71%, transparent 71%, transparent),
-  radial-gradient(circle at 100% 50%, #42D2BB 5%, #3BC1AC 6%, #3BC1AC 15%, #42D2BB 16%, #42D2BB 20%, #3BC1AC 21%, #3BC1AC 30%, #42D2BB 31%, #42D2BB 35%, #3BC1AC 36%, #3BC1AC 45%, #42D2BB 46%, #42D2BB 49%, transparent 50%, transparent),
-  radial-gradient(circle at 0    50%, #42D2BB 5%, #3BC1AC 6%, #3BC1AC 15%, #42D2BB 16%, #42D2BB 20%, #3BC1AC 21%, #3BC1AC 30%, #42D2BB 31%, #42D2BB 35%, #3BC1AC 36%, #3BC1AC 45%, #42D2BB 46%, #42D2BB 49%, transparent 50%, transparent);
+  radial-gradient(circle at 100% 150%, $bg-color-1 24%, $bg-color-2 25%, $bg-color-2 28%, $bg-color-1 29%, $bg-color-1 36%, $bg-color-2 36%, $bg-color-2 40%, transparent 40%, transparent),
+  radial-gradient(circle at 0    150%, $bg-color-1 24%, $bg-color-2 25%, $bg-color-2 28%, $bg-color-1 29%, $bg-color-1 36%, $bg-color-2 36%, $bg-color-2 40%, transparent 40%, transparent),
+  radial-gradient(circle at 50%  100%, $bg-color-2 10%, $bg-color-1 11%, $bg-color-1 23%, $bg-color-2 24%, $bg-color-2 30%, $bg-color-1 31%, $bg-color-1 43%, $bg-color-2 44%, $bg-color-2 50%, $bg-color-1 51%, $bg-color-1 63%, $bg-color-2 64%, $bg-color-2 71%, transparent 71%, transparent),
+  radial-gradient(circle at 100% 50%,  $bg-color-2 5%,  $bg-color-1 6%,  $bg-color-1 15%, $bg-color-2 16%, $bg-color-2 20%, $bg-color-1 21%, $bg-color-1 30%, $bg-color-2 31%, $bg-color-2 35%, $bg-color-1 36%, $bg-color-1 45%, $bg-color-2 46%, $bg-color-2 49%, transparent 50%, transparent),
+  radial-gradient(circle at 0    50%,  $bg-color-2 5%,  $bg-color-1 6%,  $bg-color-1 15%, $bg-color-2 16%, $bg-color-2 20%, $bg-color-1 21%, $bg-color-1 30%, $bg-color-2 31%, $bg-color-2 35%, $bg-color-1 36%, $bg-color-1 45%, $bg-color-2 46%, $bg-color-2 49%, transparent 50%, transparent);
   background-size:100px 50px;
 }
 
